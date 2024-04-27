@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  source_mysql:
+    image: mysql:8.3.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: demo
+    ports:
+      - "3306:3306"
+    volumes:
+      - source_mysql-data:/var/lib/mysql
+
+  target_mysql:
+    image: mysql:8.3.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: demo
+    ports:
+      - "3307:3306"
+    volumes:
+      - target_mysql-data:/var/lib/mysql
+
+volumes:
+  source_mysql-data:
+  target_mysql-data:
